@@ -12,11 +12,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 /**
- *
  * @author Student
  */
 public class RegistrationNGTest {
-    
+
     public RegistrationNGTest() {
     }
 
@@ -42,13 +41,21 @@ public class RegistrationNGTest {
     @Test
     public void testCheckUserName() {
         System.out.println("checkUserName");
-        String username = "_Huli";
+        String username = "_";
         Registration instance = new Registration();
         boolean expResult = true;
         boolean result = instance.checkUserName(username);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        
+    }
+
+    @Test
+    public void testCheckUserName_Invalid() {
+        System.out.println("checkUserName");
+        String username = "0";
+        Registration instance = new Registration();
+        boolean expResult = false;
+        boolean result = instance.checkUserName(username);
+        assertEquals(result, expResult);
     }
 
     /**
@@ -57,13 +64,24 @@ public class RegistrationNGTest {
     @Test
     public void testCheckPasswordComplexity() {
         System.out.println("checkPasswordComplexity");
-        String password = "Hizzy@18";
+        String password = "#082961Huli";
         Registration instance = new Registration();
         boolean expResult = true;
         boolean result = instance.checkPasswordComplexity(password);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        
+    }
+
+    /**
+     * TODO review the generated test code and remove the default call to fail.
+     */
+    @Test
+    public void testCheckPasswordComplexity_Invalid() {
+        System.out.println("checkPasswordComplexity");
+        String password = "#082961";
+        Registration instance = new Registration();
+        boolean expResult = false;
+        boolean result = instance.checkPasswordComplexity(password);
+        assertEquals(result, expResult);
     }
 
     /**
@@ -72,13 +90,21 @@ public class RegistrationNGTest {
     @Test
     public void testCheckCellPhoneNumber() {
         System.out.println("checkCellPhoneNumber");
-        String cellphone = "";
+        String cellphone = "+27753252546";
+        Registration instance = new Registration();
+        boolean expResult = true;
+        boolean result = instance.checkCellPhoneNumber(cellphone);
+        assertEquals(result, expResult);
+    }
+
+    @Test
+    public void testCheckCellPhoneNumber_Invalid() {
+        System.out.println("checkCellPhoneNumber");
+        String cellphone = "0713252546";
         Registration instance = new Registration();
         boolean expResult = false;
         boolean result = instance.checkCellPhoneNumber(cellphone);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        
     }
 
     /**
@@ -87,15 +113,15 @@ public class RegistrationNGTest {
     @Test
     public void testRegisterUser() {
         System.out.println("registerUser");
-        String username = "";
-        String password = "";
-        String cellphone = "";
+        String firstName = "Hulisani";
+        String lastName = "Nndwambi";
+        String username = "_Huli";
+        String password = "#082961Huli";
+        String cellphone = "+27713252546";
         Registration instance = new Registration();
-        String expResult = "";
-        String result = instance.registerUser(username, password, cellphone);
+        String expResult = "Username successfully captured. Password successfully captured. Cellphone number successfully added. ";
+        String result = instance.registerUser(firstName, lastName, username, password, cellphone);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        
     }
 
     /**
@@ -111,8 +137,6 @@ public class RegistrationNGTest {
         boolean expResult = false;
         boolean result = instance.registerStatus(username, password, cellphone);
         assertEquals(result, expResult);
-        // TODO review the generated test code and remove the default call to fail.
-        
     }
-    
+
 }

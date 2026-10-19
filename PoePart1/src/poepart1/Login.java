@@ -8,18 +8,19 @@ package poepart1;
  *
  * @author Student
  */
-public class Login extends Registration{
-   
+public class Login extends Registration {
+    
     public boolean loginUser(String name, String password) {
-        if (this.userName == null || this.passWord == null) {
+        if (name.equals(userName) && password.equals(passWord)) {
+            return true;
+        } else {
             return false;
         }
-        return name.equals(this.userName) && password.equals(this.passWord);
     }
 
-    public String returnLoginStatus(boolean loginStatus) {
-        if (loginStatus) {
-            return "Welcome " + firstName + ", " + lastName + " it is great to see you again.";
+    public String returnLoginStatus(boolean LoginStatus) {
+        if (LoginStatus) {
+            return "Welcome " + firstName + " " + lastName;
         } else {
             return "Username or password incorrect, please try again.";
         }
